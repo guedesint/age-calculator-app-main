@@ -1,0 +1,45 @@
+:root {
+  --primary-purple: hsl(259, 100%, 65%);
+  --primary-red: hsl(0, 100%, 67%);
+
+  --secundary-white: hsl(0, 0%, 100%);
+  --secundary-offwhite: hsl(0, 0%, 100%);
+  --secundary-lightgrey: hsl(0, 0%, 86%);
+  --secundary-smokegrey: hsl(0, 1%, 44%);
+  --secundary-offblack: hsl(0, 0%, 8%);
+  --font-family: "Poppins", sans-serif;
+}
+
+body {
+  max-width: 1440px;
+  max-height: 960px;
+}
+
+.secao {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 150px 290px;
+  width: 540px;
+  max-height: 420px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 30px 30px 80px 30px;
+  background-color: var(--secundary-lightgrey);
+}
+
+.conteudo {
+  grid-column: 1/4;
+}
+
+.lista {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+}
+
+.lista-item {
+}

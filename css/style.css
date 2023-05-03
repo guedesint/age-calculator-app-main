@@ -51,6 +51,7 @@ body {
   color: var(--secundary-smokegrey);
   font-family: var(--font-family);
   letter-spacing: 0.2em;
+  opacity: 0.9;
 }
 
 .titulo-lista {
@@ -63,7 +64,8 @@ body {
   border: 1px solid var(--secundary-lightgrey);
   border-radius: 6px;
   font-family: var(--font-family);
-  padding: 5px 0px 5px 15px;
+  padding: 5px 0px 5px 20px;
+  margin-top: 3px;
   font-size: 32px;
   opacity: 0.8;
   text-transform: uppercase;
@@ -127,7 +129,7 @@ body {
 }
 
 .resultado {
-  width: 26%;
+  width: 20%;
   font-size: 82px;
   font-family: var(--font-family);
   font-weight: 800;
@@ -141,5 +143,5 @@ body {
   font-weight: 800;
   font-size: 82px;
   font-style: italic;
-  opacity: 0.8;
+  opacity: 0.9;
 }

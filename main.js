@@ -1,29 +1,35 @@
-const listaInput = document.querySelectorAll(".input");
-const listaResultado = document.querySelectorAll(".resultado");
-const botao = document.querySelector(".botaoTeste");
+const botao = document.querySelector('.botaoTeste');
 
-//to conseguindo pegar os dados mas nao consigo substituir para o atuliza dados
-function pegarDados() {
-  listaInput.forEach((eInput, iInput) => {
-    const valorData = eInput.value;
-    console.log(valorData);
-    return valorData;
-  });
+
+
+function calculaIdade() {
+  const diaNascimento = parseInt(document.querySelector('#dd').value);
+  const mesNascimento = parseInt(document.querySelector('#mm').value);
+  const anoNascimento = parseInt(document.querySelector('#yy').value);
+
+  const dataAtual = new Date();
+
+  const anoAtual = dataAtual.getFullYear();
+  const mesAtual = dataAtual.getMonth() + 1;
+
+  let idade = anoAtual - anoNascimento;
+  
+  if (mesAtual < mesNascimento) {
+    idade--;
+  } else {
+    //Se estiver no mes do nascimento, verificar o dia
+    if (mesAtual == mesNascimento) {
+      if (new Date().getDate() < diaNascimento) {
+        //Se a data atual for menor que o dia de nascimento ele ainda nao fez aniversario
+        idade--;
+      }
+    }
+  }
+  
+  let meses = idade * 12;
+  let dias = meses * 31; 
 }
-pegarDados();
+calculaIdade()
 
-function atualizaDados(pegarDados) {
-  listaResultado.forEach((eResultado, iResultado) => {
-    eResultado.innerHTML = "1";
-  });
-}
-atualizaDados();
 
-botao.addEventListener("click", atualizaDados);
-
-// function retornandoResultado() {
-//   listaResultado.forEach((r) => {
-//      console.log(r.textContent);
-//   });
-// }
-// retornandoResultado()
+botao.addEventListener('click', calculaIdade)

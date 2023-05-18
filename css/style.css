@@ -129,12 +129,13 @@ body {
   display: grid;
   height: 7rem;
   align-items: center;
-  grid-template-columns: 125px 1fr;
+  justify-content: baseline;
+  grid-template-columns: auto 1fr;
 }
 
 .resultado {
-  max-width: 115px;
   grid-column: 1/2;
+  margin-right: 20px;
   font-size: 82px;
   font-family: var(--font-family);
   font-weight: 800;

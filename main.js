@@ -41,11 +41,7 @@ function calculaIdade() {
 
     const resultadoDia = document.querySelector('.dias')
     resultadoDia.innerHTML = idadeDia;
-  }else {
-    
   }
-
-
 }
 calculaIdade()
 

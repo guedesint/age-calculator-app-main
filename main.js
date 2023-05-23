@@ -1,4 +1,4 @@
-const botao = document.querySelector('.botaoTeste');
+
 
 
 function calculaIdade() {

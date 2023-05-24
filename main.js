@@ -1,5 +1,4 @@
-
-
+const botao = document.querySelector('.logo');
 
 function calculaIdade() {
 

@@ -13,7 +13,7 @@ function calculaIdade() {
   const diaAtual = dataAtual.getDate();
 
   let idade = anoAtual - anoNascimento;
-  let idadeMes = (mesAtual - mesNascimento) + (idade * 12);
+  let idadeMes = (mesAtual - mesNascimento) + (idade * 12);1
   let idadeDia = (diaAtual - diaNascimento) + (idadeMes * 30);
 
 

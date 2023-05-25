@@ -1,48 +1,40 @@
 const botao = document.querySelector('.logo');
+const resultadoDia = document.querySelector('.dias')
+const resultadoMes = document.querySelector('.meses')
+const resultadoAno = document.querySelector('.anos')
 
-function calculaIdade() {
 
+botao.addEventListener('click', () => {
+  //Pegando valor dos Inputs
   const diaNascimento = parseInt(document.querySelector('#dd').value);
   const mesNascimento = parseInt(document.querySelector('#mm').value);
   const anoNascimento = parseInt(document.querySelector('#yy').value);
-
+  
+  //Pegando datas Atuais
   const dataAtual = new Date();
-
-  const anoAtual = dataAtual.getFullYear();
-  const mesAtual = dataAtual.getMonth() + 1;
   const diaAtual = dataAtual.getDate();
+  const mesAtual = dataAtual.getMonth() + 1;
+  const anoAtual = dataAtual.getFullYear();
 
-  let idade = anoAtual - anoNascimento;
-  let idadeMes = (mesAtual - mesNascimento) + (idade * 12);1
-  let idadeDia = (diaAtual - diaNascimento) + (idadeMes * 30);
+  //Validando Valor Inputs
+  const validaDia = diaNascimento > 0 && diaNascimento <= 31;
+  const validaMes = mesNascimento > 0 && mesNascimento <= 12;
+  const validaAno = anoNascimento > 1900 && anoNascimento < dataAtual.getFullYear();
 
 
+  if (validaDia && validaMes && validaAno) {
+    let idade = anoAtual - anoNascimento;
+    let idadeMes = (mesAtual + 12 - mesNascimento) % 12;
+    let idadeDia = diaAtual - diaNascimento
 
-  if (mesAtual < mesNascimento) {
-    idade--;
-  } else {
-    //Se estiver no mes do nascimento, verificar o dia
-    if (mesAtual == mesNascimento) {
-      if (new Date().getDate() < diaNascimento) {
-        //Se a data atual for menor que o dia de nascimento ele ainda nao fez aniversario
-        idade--;
-      }
+    if (mesAtual <= mesNascimento || diaAtual < diaNascimento) {
+      idade--;
     }
-  }
 
-  if (diaNascimento && mesNascimento && anoNascimento >= 0) {
-
-    const resultadoAno = document.querySelector('.anos')
+    resultadoDia.innerHTML = idadeDia;
+    resultadoMes.innerHTML = idadeMes;
     resultadoAno.innerHTML = idade;
 
-    const resultadoMes = document.querySelector('.meses')
-    resultadoMes.innerHTML = idadeMes;
-
-    const resultadoDia = document.querySelector('.dias')
-    resultadoDia.innerHTML = idadeDia;
   }
-}
-calculaIdade()
 
-
-botao.addEventListener('click', calculaIdade)
+})

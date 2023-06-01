@@ -1,7 +1,6 @@
 :root {
   --primary-purple: hsl(259, 100%, 65%);
   --primary-red: hsl(0, 100%, 67%);
-
   --secundary-white: hsl(0, 0%, 100%);
   --secundary-offwhite: hsl(0, 0%, 100%);
   --secundary-lightgrey: hsl(0, 0%, 86%);
@@ -80,10 +79,23 @@ body {
 }
 
 .text-error {
+  display: none;
   color:var(--primary-red);
   font-size: 12px;
   text-align: center;
   padding-top: 10px;
+}
+
+.titulo-error {
+  color: var(--primary-red);
+}
+
+.input-error {
+  border-color: var(--primary-red);
+}
+
+.input-error:hover {
+  border-color: var(--primary-red);
 }
 
 

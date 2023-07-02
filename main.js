@@ -2,6 +2,7 @@ const months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 const botao = document.querySelector(".logo");
 const listaInputs = document.querySelectorAll(".lista-item");
+const restultado = document.querySelectorAll(".resultado")
 const resultadoDia = document.querySelector(".dias");
 const resultadoMes = document.querySelector(".meses");
 const resultadoAno = document.querySelector(".anos");
@@ -68,12 +69,7 @@ botao.addEventListener("click", (event) => {
   resultadoMes.innerHTML = idadeMes;
   resultadoAno.innerHTML = idade;
 
-  function dataInvalida() {
-
-    erroTitulo.classList.add("titulo-error");
-    erroInput.classList.add("input-error");
-    invalid.style.display = "block";
-  }
+  
 
   if (!validaDia || !validaMes || !validaAno) {
     const tituloError = document.querySelectorAll('.titulo-lista');
@@ -93,6 +89,8 @@ botao.addEventListener("click", (event) => {
        e.style.border = '1px solid hsl(0, 100%, 67%)'
     });
 
-    
+    restultado.forEach((e) => {
+       e.innerHTML = ' - - ';
+    });
   }
 });

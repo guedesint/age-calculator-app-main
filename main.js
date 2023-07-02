@@ -73,7 +73,7 @@ botao.addEventListener("click", (event) => {
             idadeDia += 30;
             break;
         }
-        
+          teste
 
         resultadoDia.innerHTML = idadeDia;
         resultadoMes.innerHTML = idadeMes;

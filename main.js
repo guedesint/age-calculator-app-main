@@ -2,13 +2,10 @@ const months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 const botao = document.querySelector(".logo");
 const listaInputs = document.querySelectorAll(".lista-item");
-const restultado = document.querySelectorAll(".resultado")
+const restultado = document.querySelectorAll(".resultado");
 const resultadoDia = document.querySelector(".dias");
 const resultadoMes = document.querySelector(".meses");
 const resultadoAno = document.querySelector(".anos");
-const invalid = document.querySelector(".text-error");
-const erroTitulo = document.querySelector(".titulo-lista");
-const erroInput = document.querySelector(".input");
 let idade, idadeDia, idadeMes;
 
 botao.addEventListener("click", (event) => {
@@ -31,7 +28,6 @@ botao.addEventListener("click", (event) => {
   const validaAno = anoNascimento > 0 && anoNascimento <= anoAtual;
 
   if (validaDia && validaMes && validaAno) {
-    
     if (
       anoNascimento > anoAtual ||
       (mesNascimento > mesAtual && anoNascimento == anoAtual) ||
@@ -64,33 +60,41 @@ botao.addEventListener("click", (event) => {
     }
   }
 
-
   resultadoDia.innerHTML = idadeDia;
   resultadoMes.innerHTML = idadeMes;
   resultadoAno.innerHTML = idade;
 
-  
+  listaInputs.forEach((input) => {
+    const inputDia = document.querySelector("#dd");
+    const inputMes = document.querySelector("#mm");
+    const inputAno = document.querySelector("#yy");
 
-  if (!validaDia || !validaMes || !validaAno) {
-    const tituloError = document.querySelectorAll('.titulo-lista');
-    const textError = document.querySelectorAll('.text-error');
-    const inputError = document.querySelectorAll('.input');
-    const erro = inputError + textError + tituloError;
+    if (!validaDia) {
+      const parent = inputDia.parentElement;
+      const p = parent.querySelector("p");
+      parent.classList.add("error");
+      p.innerText = "this field is required";
+    } else if (!validaMes) {
+      const parent = inputMes.parentElement;
+      const p = parent.querySelector("p");
+      parent.classList.add("error");
+      p.innerText = "this field is required";
+    } else if (!validaAno) {
+      const parent = inputAno.parentElement;
+      const p = parent.querySelector("p");
+      parent.classList.add("error");
+      p.innerText = "this field is required";
+    } else {
+      const parent = input.parentElement;
+      input.classList.remove("error");
+      const p = parent.querySelector("p");
+      p.innerText = "";
+    }
+  });
 
-    tituloError.forEach((e) => {
-       e.classList.add('titulo-error');
-    });
-
-    textError.forEach((e) => {
-       e.style.display = 'block'
-    });
-
-    inputError.forEach((e) => {
-       e.style.border = '1px solid hsl(0, 100%, 67%)'
-    });
-
+  if (!validaAno || !validaDia || !validaMes) {
     restultado.forEach((e) => {
-       e.innerHTML = ' - - ';
+      e.innerHTML = " - - ";
     });
   }
 });

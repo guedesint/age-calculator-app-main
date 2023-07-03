@@ -112,6 +112,7 @@ body {
   width: 75px;
   height: 75px;
   background-color: var(--primary-purple);
+  border: none;
   border-radius: 50px;
   display: flex;
   align-items: center;
@@ -119,11 +120,13 @@ body {
   justify-self: end;
   align-self: end;
   transform: translateY(50%);
+  
 }
 
-.logo:hover {
+.logo:active {
   background-color: black;
 }
+
 .icon {
   width: 50px;
   height: 50px;
@@ -192,3 +195,5 @@ body {
     grid-row: 3/4;
   }
 }
+
+

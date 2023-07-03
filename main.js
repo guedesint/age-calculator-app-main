@@ -1,20 +1,20 @@
 const months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-const botao = document.querySelector(".logo");
-const listaInputs = document.querySelectorAll(".lista-item");
-const restultado = document.querySelectorAll(".resultado");
-const resultadoDia = document.querySelector(".dias");
-const resultadoMes = document.querySelector(".meses");
-const resultadoAno = document.querySelector(".anos");
+const botao = document.querySelector('.logo');
+const listaInputs = document.querySelectorAll('.lista-item');
+const resultado = document.querySelectorAll('.resultado');
+const resultadoDia = document.querySelector('.dias');
+const resultadoMes = document.querySelector('.meses');
+const resultadoAno = document.querySelector('.anos');
 let idade, idadeDia, idadeMes;
 
-botao.addEventListener("click", (event) => {
+botao.addEventListener('click', (event) => {
   event.preventDefault();
 
   //Pegando valor dos Inputs
-  const diaNascimento = parseInt(document.querySelector("#dd").value);
-  const mesNascimento = parseInt(document.querySelector("#mm").value);
-  const anoNascimento = parseInt(document.querySelector("#yy").value);
+  const diaNascimento = parseInt(document.querySelector('#dd').value);
+  const mesNascimento = parseInt(document.querySelector('#mm').value);
+  const anoNascimento = parseInt(document.querySelector('#yy').value);
 
   //Pegando datas Atuais
   const dataAtual = new Date();
@@ -25,7 +25,7 @@ botao.addEventListener("click", (event) => {
   //Validando Valor Inputs
   const validaDia = diaNascimento > 0 && diaNascimento <= 31;
   const validaMes = mesNascimento > 0 && mesNascimento <= 12;
-  const validaAno = anoNascimento > 0 && anoNascimento <= anoAtual;
+  const validaAno = anoNascimento >= 1900 && anoNascimento <= anoAtual;
 
   if (validaDia && validaMes && validaAno) {
     if (
@@ -60,41 +60,73 @@ botao.addEventListener("click", (event) => {
     }
   }
 
-  resultadoDia.innerHTML = idadeDia;
-  resultadoMes.innerHTML = idadeMes;
   resultadoAno.innerHTML = idade;
+  resultadoMes.innerHTML = idadeMes;
+  resultadoDia.innerHTML = idadeDia;
 
   listaInputs.forEach((input) => {
-    const inputDia = document.querySelector("#dd");
-    const inputMes = document.querySelector("#mm");
-    const inputAno = document.querySelector("#yy");
+    const inputDia = document.querySelector('#dd');
+    const inputMes = document.querySelector('#mm');
+    const inputAno = document.querySelector('#yy');
+
 
     if (!validaDia) {
       const parent = inputDia.parentElement;
-      const p = parent.querySelector("p");
-      parent.classList.add("error");
-      p.innerText = "this field is required";
-    } else if (!validaMes) {
-      const parent = inputMes.parentElement;
-      const p = parent.querySelector("p");
-      parent.classList.add("error");
-      p.innerText = "this field is required";
-    } else if (!validaAno) {
-      const parent = inputAno.parentElement;
-      const p = parent.querySelector("p");
-      parent.classList.add("error");
-      p.innerText = "this field is required";
+      const p = parent.querySelector('p');
+      parent.classList.add('error');
+      p.innerText = 'Valor invalido!';
     } else {
-      const parent = input.parentElement;
-      input.classList.remove("error");
-      const p = parent.querySelector("p");
-      p.innerText = "";
+      const parent = inputDia.parentElement;
+      const p = parent.querySelector('p');
+      parent.classList.remove('error');
+      p.innerText = '';
     }
+    if (!validaMes) {
+      const parent = inputMes.parentElement;
+      const p = parent.querySelector('p');
+      parent.classList.add('error');
+      p.innerText = 'Valor invalido!';
+    } else {
+      const parent = inputMes.parentElement;
+      const p = parent.querySelector('p');
+      parent.classList.remove('error');
+      p.innerText = '';
+    }
+    if (!validaAno) {
+      const parent = inputAno.parentElement;
+      const p = parent.querySelector('p');
+      parent.classList.add('error');
+      p.innerText = 'Valor invalido!';
+    } else {
+      const parent = inputAno.parentElement;
+      const p = parent.querySelector('p');
+      parent.classList.remove('error');
+      p.innerText = '';
+    }
+
   });
 
   if (!validaAno || !validaDia || !validaMes) {
-    restultado.forEach((e) => {
-      e.innerHTML = " - - ";
+    resultado.forEach((e) => {
+      e.innerHTML = ' - - ';
     });
   }
+
+
+function numeros(i, endI, resultado) {
+    const speed = 50;
+    if (i <= endI) {
+      resultado.innerHTML = i
+    }
+    setTimeout(() => {
+      numeros(i + 1, endI, resultado)
+    }, speed);
+  }
+
+  resultado.forEach((elemento) => {
+    const endI = parseInt(elemento.innerHTML);
+    numeros(0, endI, elemento);
+  });
+
 });
+

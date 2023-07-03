@@ -8,6 +8,8 @@ const resultadoMes = document.querySelector('.meses');
 const resultadoAno = document.querySelector('.anos');
 let idade, idadeDia, idadeMes;
 
+
+
 botao.addEventListener('click', (event) => {
   event.preventDefault();
 
@@ -113,7 +115,7 @@ botao.addEventListener('click', (event) => {
   }
 
 
-function numeros(i, endI, resultado) {
+  function numeros(i, endI, resultado) {
     const speed = 50;
     if (i <= endI) {
       resultado.innerHTML = i
@@ -128,5 +130,8 @@ function numeros(i, endI, resultado) {
     numeros(0, endI, elemento);
   });
 
+  listaInputs.forEach((input) => {
+    const reset = input.querySelector('.input');
+    reset.value = '';
+  });
 });
-

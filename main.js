@@ -132,7 +132,9 @@ botao.addEventListener('click', (event) => {
 
   listaInputs.forEach((input) => {
     const reset = input.querySelector('.input');
-    reset.value = '';
+    if (validaAno && validaDia && validaMes === true) {
+      reset.value = '';
+    }
   });
   
 });

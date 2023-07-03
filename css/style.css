@@ -122,7 +122,10 @@ body {
   transform: translateY(50%);
   
 }
-
+.logo:hover {
+  border: 2px solid black;
+  transition: 0.03s;
+}
 .logo:active {
   background-color: black;
 }

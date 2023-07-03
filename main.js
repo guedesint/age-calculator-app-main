@@ -134,4 +134,5 @@ botao.addEventListener('click', (event) => {
     const reset = input.querySelector('.input');
     reset.value = '';
   });
+  
 });

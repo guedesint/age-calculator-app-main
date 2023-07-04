@@ -1,22 +1,20 @@
 const months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-const botao = document.querySelector('.logo');
-const listaInputs = document.querySelectorAll('.lista-item');
-const resultado = document.querySelectorAll('.resultado');
-const resultadoDia = document.querySelector('.dias');
-const resultadoMes = document.querySelector('.meses');
-const resultadoAno = document.querySelector('.anos');
+const botao = document.querySelector(".logo");
+const listaInputs = document.querySelectorAll(".lista-item");
+const resultado = document.querySelectorAll(".resultado");
+const resultadoDia = document.querySelector(".dias");
+const resultadoMes = document.querySelector(".meses");
+const resultadoAno = document.querySelector(".anos");
 let idade, idadeDia, idadeMes;
 
-
-
-botao.addEventListener('click', (event) => {
+botao.addEventListener("click", (event) => {
   event.preventDefault();
 
   //Pegando valor dos Inputs
-  const diaNascimento = parseInt(document.querySelector('#dd').value);
-  const mesNascimento = parseInt(document.querySelector('#mm').value);
-  const anoNascimento = parseInt(document.querySelector('#yy').value);
+  const diaNascimento = parseInt(document.querySelector("#dd").value);
+  const mesNascimento = parseInt(document.querySelector("#mm").value);
+  const anoNascimento = parseInt(document.querySelector("#yy").value);
 
   //Pegando datas Atuais
   const dataAtual = new Date();
@@ -67,61 +65,58 @@ botao.addEventListener('click', (event) => {
   resultadoDia.innerHTML = idadeDia;
 
   listaInputs.forEach((input) => {
-    const inputDia = document.querySelector('#dd');
-    const inputMes = document.querySelector('#mm');
-    const inputAno = document.querySelector('#yy');
-
+    const inputDia = document.querySelector("#dd");
+    const inputMes = document.querySelector("#mm");
+    const inputAno = document.querySelector("#yy");
 
     if (!validaDia) {
       const parent = inputDia.parentElement;
-      const p = parent.querySelector('p');
-      parent.classList.add('error');
-      p.innerText = 'Valor invalido!';
+      const p = parent.querySelector("p");
+      parent.classList.add("error");
+      p.innerText = "Valor invalido!";
     } else {
       const parent = inputDia.parentElement;
-      const p = parent.querySelector('p');
-      parent.classList.remove('error');
-      p.innerText = '';
+      const p = parent.querySelector("p");
+      parent.classList.remove("error");
+      p.innerText = "";
     }
     if (!validaMes) {
       const parent = inputMes.parentElement;
-      const p = parent.querySelector('p');
-      parent.classList.add('error');
-      p.innerText = 'Valor invalido!';
+      const p = parent.querySelector("p");
+      parent.classList.add("error");
+      p.innerText = "Valor invalido!";
     } else {
       const parent = inputMes.parentElement;
-      const p = parent.querySelector('p');
-      parent.classList.remove('error');
-      p.innerText = '';
+      const p = parent.querySelector("p");
+      parent.classList.remove("error");
+      p.innerText = "";
     }
     if (!validaAno) {
       const parent = inputAno.parentElement;
-      const p = parent.querySelector('p');
-      parent.classList.add('error');
-      p.innerText = 'Valor invalido!';
+      const p = parent.querySelector("p");
+      parent.classList.add("error");
+      p.innerText = "Valor invalido!";
     } else {
       const parent = inputAno.parentElement;
-      const p = parent.querySelector('p');
-      parent.classList.remove('error');
-      p.innerText = '';
+      const p = parent.querySelector("p");
+      parent.classList.remove("error");
+      p.innerText = "";
     }
-
   });
 
   if (!validaAno || !validaDia || !validaMes) {
     resultado.forEach((e) => {
-      e.innerHTML = ' - - ';
+      e.innerHTML = " - - ";
     });
   }
 
-
   function numeros(i, endI, resultado) {
-    const speed = 50;
+    const speed = 25;
     if (i <= endI) {
-      resultado.innerHTML = i
+      resultado.innerHTML = i;
     }
     setTimeout(() => {
-      numeros(i + 1, endI, resultado)
+      numeros(i + 1, endI, resultado);
     }, speed);
   }
 
@@ -131,10 +126,9 @@ botao.addEventListener('click', (event) => {
   });
 
   listaInputs.forEach((input) => {
-    const reset = input.querySelector('.input');
+    const reset = input.querySelector(".input");
     if (validaAno && validaDia && validaMes === true) {
-      reset.value = '';
+      reset.value = "";
     }
   });
-  
 });

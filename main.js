@@ -1,11 +1,5 @@
 const months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-function Dom(seletor) {
-   this.element = () => {
-    return document.querySelector(seletor);
-   }
-}
-
 const botao = document.querySelector(".logo");
 const listaInputs = document.querySelectorAll(".lista-item");
 const resultado = document.querySelectorAll(".resultado");
